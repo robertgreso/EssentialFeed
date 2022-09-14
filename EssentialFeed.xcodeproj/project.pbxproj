@@ -14,6 +14,7 @@
 		260435C22898BA5C009EEB95 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260435C12898BA5C009EEB95 /* FeedLoader.swift */; };
 		262AC00628B5AF5E000CA8F0 /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262AC00528B5AF5E000CA8F0 /* RemoteFeedLoader.swift */; };
 		26836E1828D0612900B6191C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26836E1728D0612900B6191C /* HTTPClient.swift */; };
+		26836E1A28D1A02D00B6191C /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26836E1928D1A02D00B6191C /* FeedItemsMapper.swift */; };
 		268F61CC289CCE1200F5553F /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F61CB289CCE1200F5553F /* RemoteFeedLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		260435C12898BA5C009EEB95 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		262AC00528B5AF5E000CA8F0 /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		26836E1728D0612900B6191C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		26836E1928D1A02D00B6191C /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		268F61CB289CCE1200F5553F /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 			children = (
 				260435BF2898B94C009EEB95 /* FeedItem.swift */,
 				260435C12898BA5C009EEB95 /* FeedLoader.swift */,
+				26836E1928D1A02D00B6191C /* FeedItemsMapper.swift */,
 			);
 			path = "Feed Feature";
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				262AC00628B5AF5E000CA8F0 /* RemoteFeedLoader.swift in Sources */,
 				26836E1828D0612900B6191C /* HTTPClient.swift in Sources */,
 				260435C22898BA5C009EEB95 /* FeedLoader.swift in Sources */,
+				26836E1A28D1A02D00B6191C /* FeedItemsMapper.swift in Sources */,
 				260435C02898B94C009EEB95 /* FeedItem.swift in Sources */,
 				260435AA2898B940009EEB95 /* EssentialFeed.docc in Sources */,
 			);
