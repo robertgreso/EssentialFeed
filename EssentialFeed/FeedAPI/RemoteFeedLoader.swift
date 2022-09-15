@@ -30,7 +30,9 @@ public final class RemoteFeedLoader {
     public func load(completion: @escaping (Result) -> Void) {
         
         // TODO: WHY THE FUCK is this called in the tests only when client.complete which is after load
-        client.get(from: url) { result in
+        client.get(from: url) { [weak self] result in
+            guard self != nil else { return }
+            
             switch result {
             case let .success(data, response):
                 completion(FeedItemsMapper.map(data, response))
