@@ -143,7 +143,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     func anyData() -> Data {
-        return Data(bytes: "AnyData".utf8)
+        return Data("AnyData".utf8)
     }
     
     func anyNSError() -> NSError {
