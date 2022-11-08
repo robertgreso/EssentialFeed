@@ -53,9 +53,12 @@ class CodableFeedStore {
             return
         }
         
-        let decoded = try! JSONDecoder().decode(Cache.self, from: data)
-        
-        completion(.found(feed: decoded.localFeed, timestamp: decoded.timestamp))
+        do {
+            let decoded = try JSONDecoder().decode(Cache.self, from: data)
+            completion(.found(feed: decoded.localFeed, timestamp: decoded.timestamp))
+        } catch {
+            completion(.failure(error))
+        }
     }
     
     func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping FeedStore.InsertCompletion) {
@@ -103,6 +106,14 @@ class CodableFeedStoreTests: XCTestCase {
         expect(sut, toRetrieve: .found(feed: feed, timestamp: timestamp))
     }
     
+    func test_retrieve_deliversFailureOnRetrievalError() {
+        let sut = makeSUT()
+        
+        try! "invalidData".write(to: testSpecificStoreURL(), atomically: false, encoding: .utf8)
+        
+        expect(sut, toRetrieve: .failure(anyNSError()))
+    }
+    
     func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
         let sut = makeSUT()
         let feed = uniqueImageFeed().local
@@ -128,6 +139,9 @@ class CodableFeedStoreTests: XCTestCase {
         sut.retrieve { retrievalResult in
             switch (retrievalResult, expectedResult) {
             case (.empty, .empty):
+                break
+                
+            case (.failure, .failure):
                 break
                 
             case let (.found(expectedFeed, expectedTimestamp), .found(retrievedFeed, retrievedTimestamp)):
