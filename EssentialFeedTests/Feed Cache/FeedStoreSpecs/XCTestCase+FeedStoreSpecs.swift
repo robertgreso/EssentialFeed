@@ -116,50 +116,6 @@ extension FeedStoreSpecs where Self: XCTestCase {
 
 extension FeedStoreSpecs where Self: XCTestCase {
     
-    func assertThatDeleteDeliversErrorOnDeletionError(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
-        let deletionError = deleteCacheFeed(from: sut)
-        
-        XCTAssertNotNil(deletionError, "Expected cache deletion to fail")
-    }
-    
-    func assertThatDeleteHasNoSideEffectsOnDeletionError(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
-        deleteCacheFeed(from: sut)
-        
-        expect(sut, toRetrieve: .empty)
-    }
-    
-}
-
-extension FeedStoreSpecs where Self: XCTestCase {
-    
-    func assertThatInsertDeliversFailureOnInsertionError(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
-        let insertionError = insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
-        
-        XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error")
-    }
-    
-    func assertThatInsertHasNoSideEffectsOnInsertionError(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
-        insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
-        
-        expect(sut, toRetrieve: .empty)
-    }
-    
-}
-
-extension FeedStoreSpecs where Self: XCTestCase {
-    
-    func assertThatRetrieveDeliversFailureOnRetrievalError(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
-        expect(sut, toRetrieve: .failure(anyNSError()), file: file, line: line)
-    }
-    
-    
-    func assertThatRetrieveHasNoSideEffectsOnFailure(on sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
-        expect(sut, toRetrieve: .failure(anyNSError()))
-    }
-}
-
-extension FeedStoreSpecs where Self: XCTestCase {
-    
     func expect(_ sut: FeedStore, toRetrieve expectedResult: RetrieveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for cache retrieval")
         
