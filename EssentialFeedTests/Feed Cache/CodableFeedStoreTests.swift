@@ -108,6 +108,15 @@ class CodableFeedStoreTests: XCTestCase {
         XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error")
     }
     
+    func test_insert_hasNoSideEffectsOnInsertionError() {
+        let noInsertPermissionURL = noInsertPermissionURL()
+        let sut = makeSUT(storeURL: noInsertPermissionURL)
+        
+        insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
+        
+        expect(sut, toRetrieve: .empty)
+    }
+    
     func test_delete_deliversNoErrorOnEmptyCache() {
         let sut = makeSUT()
         
@@ -250,6 +259,10 @@ class CodableFeedStoreTests: XCTestCase {
     }
     
     private func noDeletePermissionURL() -> URL {
+        FileManager.default.urls(for: .allLibrariesDirectory, in: .systemDomainMask).first!
+    }
+    
+    private func noInsertPermissionURL() -> URL {
         FileManager.default.urls(for: .allLibrariesDirectory, in: .systemDomainMask).first!
     }
     
