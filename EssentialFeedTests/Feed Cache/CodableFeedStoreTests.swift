@@ -125,6 +125,15 @@ class CodableFeedStoreTests: XCTestCase {
         XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
     }
     
+    func test_delete_deliversNoErrorOnNonEmptyCache() {
+        let sut = makeSUT()
+        
+        insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
+        let deletionError = deleteCacheFeed(from: sut)
+        
+        XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
+    }
+    
     func test_delete_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
         
