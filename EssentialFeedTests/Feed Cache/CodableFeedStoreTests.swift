@@ -71,17 +71,31 @@ class CodableFeedStoreTests: XCTestCase {
         expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp))
     }
     
+    func test_insert_deliversNoErrorsOnEmptyCache() {
+        let sut = makeSUT()
+
+        let insertionError = insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
+        XCTAssertNil(insertionError, "Expected to insert cache successfully")
+    }
+    
+    func test_insert_deliversNoErrorsOnNonEmptyCache() {
+        let sut = makeSUT()
+
+        insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
+        let insertionError = insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
+        
+        XCTAssertNil(insertionError, "Expected to override cache successfully")
+    }
+    
     func test_insert_overridesPreviouslyInsertedCacheValues() {
         let sut = makeSUT()
         
-        let firstInsertionError = insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
-        XCTAssertNil(firstInsertionError, "Expected to insert cache successfully")
+        insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
         
         let latestFeed = uniqueImageFeed().local
         let latestTimestamp = Date()
-        let latestInsertionError = insert(feed: latestFeed, timestamp: latestTimestamp, to: sut)
+        insert(feed: latestFeed, timestamp: latestTimestamp, to: sut)
         
-        XCTAssertNil(latestInsertionError, "Expected to insert cache successfully")
         expect(sut, toRetrieve: .found(feed: latestFeed, timestamp: latestTimestamp))
     }
     
@@ -94,12 +108,19 @@ class CodableFeedStoreTests: XCTestCase {
         XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error")
     }
     
-    func test_delete_hasNoSideEffectsOnEmptyCache() {
+    func test_delete_deliversNoErrorOnEmptyCache() {
         let sut = makeSUT()
         
         let deletionError = deleteCacheFeed(from: sut)
         
         XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
+    }
+    
+    func test_delete_hasNoSideEffectsOnEmptyCache() {
+        let sut = makeSUT()
+        
+        deleteCacheFeed(from: sut)
+        
         expect(sut, toRetrieve: .empty)
     }
     
@@ -107,20 +128,26 @@ class CodableFeedStoreTests: XCTestCase {
         let sut = makeSUT()
         
         insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
-        let deletionError = deleteCacheFeed(from: sut)
+        deleteCacheFeed(from: sut)
 
-        XCTAssertNil(deletionError, "Expected non-empty cache deletion to succeeed")
         expect(sut, toRetrieve: .empty)
     }
     
     func test_delete_deliversErrorOnDeletionError() {
-        let noDeletePermissionURL = FileManager.default.urls(for: .allLibrariesDirectory, in: .systemDomainMask).first!
-
+        let noDeletePermissionURL = noDeletePermissionURL()
         let sut = makeSUT(storeURL: noDeletePermissionURL)
         
         let deletionError = deleteCacheFeed(from: sut)
         
         XCTAssertNotNil(deletionError, "Expected cache deletion to fail")
+    }
+    
+    func test_delete_hasNoSideEffectsOnDeletionError() {
+        let noDeletePermissionURL = noDeletePermissionURL()
+        let sut = makeSUT(storeURL: noDeletePermissionURL)
+        
+        deleteCacheFeed(from: sut)
+        
         expect(sut, toRetrieve: .empty)
     }
     
@@ -204,6 +231,7 @@ class CodableFeedStoreTests: XCTestCase {
         return insertionError
     }
     
+    @discardableResult
     private func deleteCacheFeed(from sut: FeedStore) -> Error? {
         let exp = expectation(description: "Wait for cache deletion")
         
@@ -219,6 +247,10 @@ class CodableFeedStoreTests: XCTestCase {
     
     private func cachesDirectory() -> URL {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+    }
+    
+    private func noDeletePermissionURL() -> URL {
+        FileManager.default.urls(for: .allLibrariesDirectory, in: .systemDomainMask).first!
     }
     
     private func testSpecificStoreURL() -> URL {
