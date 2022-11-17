@@ -16,6 +16,10 @@ internal class ManagedFeedImage: NSManagedObject {
     @NSManaged var url: URL
     @NSManaged var cache: ManagedCache
     
+}
+
+extension ManagedFeedImage {
+    
     var local: LocalFeedImage {
         LocalFeedImage(id: self.id, description: self.imageDescription, location: self.location, url: self.url)
     }
