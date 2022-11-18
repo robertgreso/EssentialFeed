@@ -25,19 +25,7 @@ class EssentialFeedIntegrationTests: XCTestCase {
     func test_load_deliversNoItemsOnEmptyCache() {
         let sut = makeSUT()
         
-        let exp = expectation(description: "Wait for load completion")
-        sut.load { result in
-            switch result {
-            case let .success(imageFeed):
-                XCTAssertEqual(imageFeed, [], "Expected empty feed")
-            case let .failure(error):
-                XCTFail("Expected successful feed result, got \(error) instead")
-            }
-            
-            exp.fulfill()
-        }
-        
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toLoad: [])
     }
     
     func test_load_deliversItemSavedOnASeparateInstance() {
@@ -54,19 +42,7 @@ class EssentialFeedIntegrationTests: XCTestCase {
 
         wait(for: [saveExp], timeout: 1.0)
 
-        let loadExp = expectation(description: "Wait for load completion")
-
-        sutToPerformLoad.load { result in
-            switch result {
-            case let .success(loadedFeed):
-                XCTAssertEqual(loadedFeed, feed, "Expected to load the same feed as the one that was saved")
-            case let .failure(error):
-                XCTFail("Expected successful feed result, got \(error)")
-            }
-            loadExp.fulfill()
-        }
-
-        wait(for: [loadExp], timeout: 1.0)
+        expect(sutToPerformLoad, toLoad: feed)
     }
     
     // MARK: Helpers
@@ -81,6 +57,22 @@ class EssentialFeedIntegrationTests: XCTestCase {
         trackForMemoryLeaks(store)
         
         return sut
+    }
+    
+    private func expect(_ sut: LocalFeedLoader, toLoad expectedFeed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+
+        sut.load { result in
+            switch result {
+            case let .success(loadedFeed):
+                XCTAssertEqual(loadedFeed, expectedFeed, "Expected to load the same feed as the one that was saved", file: file, line: line)
+            case let .failure(error):
+                XCTFail("Expected successful feed result, got \(error)", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1.0)
     }
     
     private func testSpecificStoreURL() -> URL {
