@@ -113,7 +113,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
         
         deleteCacheFeed(from: sut)
         
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .success(.empty))
     }
     
     func test_delete_emptiesPreviouslyInsertedCache() {
@@ -122,7 +122,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
         insert(feed: uniqueImageFeed().local, timestamp: Date(), to: sut)
         deleteCacheFeed(from: sut)
 
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .success(.empty))
     }
     
     func test_delete_deliversErrorOnDeletionError() {
