@@ -55,6 +55,7 @@
 		26F6A2482925DF4300E83188 /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6A2472925DF4300E83188 /* ManagedCache.swift */; };
 		26F6A24A2925DF4F00E83188 /* ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6A2492925DF4F00E83188 /* ManagedFeedImage.swift */; };
 		26FCAE0D29372EEE009F63A0 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260435A52898B940009EEB95 /* EssentialFeed.framework */; platformFilter = ios; };
+		26FCAE1229372FF0009F63A0 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEC89028E89096000ABC38 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -688,6 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				265B73C82935E61B00CD3FD3 /* FeedViewControllerTests.swift in Sources */,
+				26FCAE1229372FF0009F63A0 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
