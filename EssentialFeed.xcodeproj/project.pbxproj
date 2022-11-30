@@ -54,6 +54,7 @@
 		26F6A2462925DEB400E83188 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6A2452925DEB400E83188 /* CoreDataHelpers.swift */; };
 		26F6A2482925DF4300E83188 /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6A2472925DF4300E83188 /* ManagedCache.swift */; };
 		26F6A24A2925DF4F00E83188 /* ManagedFeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F6A2492925DF4F00E83188 /* ManagedFeedImage.swift */; };
+		26FCAE0D29372EEE009F63A0 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260435A52898B940009EEB95 /* EssentialFeed.framework */; platformFilter = ios; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,13 @@
 			remoteInfo = EssentialFeed;
 		};
 		26F011A728EE960D00570A1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2604359C2898B940009EEB95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 260435A42898B940009EEB95;
+			remoteInfo = EssentialFeed;
+		};
+		26FCAE0F29372EEE009F63A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2604359C2898B940009EEB95 /* Project object */;
 			proxyType = 1;
@@ -155,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FCAE0D29372EEE009F63A0 /* EssentialFeed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +204,7 @@
 				2620DADA2933411B00EE0794 /* EssentialFeediOS */,
 				2620DAE62933411B00EE0794 /* EssentialFeediOSTests */,
 				260435A62898B940009EEB95 /* Products */,
+				26FCAE0C29372EEE009F63A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -380,6 +390,13 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
+		26FCAE0C29372EEE009F63A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -449,6 +466,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				26FCAE1029372EEE009F63A0 /* PBXTargetDependency */,
 			);
 			name = EssentialFeediOS;
 			productName = EssentialFeediOS;
@@ -716,6 +734,12 @@
 			target = 260435A42898B940009EEB95 /* EssentialFeed */;
 			targetProxy = 26F011A728EE960D00570A1C /* PBXContainerItemProxy */;
 		};
+		26FCAE1029372EEE009F63A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 260435A42898B940009EEB95 /* EssentialFeed */;
+			targetProxy = 26FCAE0F29372EEE009F63A0 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -954,6 +978,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -984,6 +1009,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
