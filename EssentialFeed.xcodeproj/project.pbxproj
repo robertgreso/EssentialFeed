@@ -316,15 +316,8 @@
 		2620DAE62933411B00EE0794 /* EssentialFeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				265B73C72935E61B00CD3FD3 /* FeedViewControllerTests.swift */,
-				2633F409294CE4D70051AD6A /* UIImage+TestHelpers.swift */,
-				2633F40B294CE5360051AD6A /* UIRefreshControl+TestHelpers.swift */,
-				2633F40D294CE5820051AD6A /* UIButton+TestHelpers.swift */,
-				2633F40F294CE5CD0051AD6A /* UIControl+TestHelpers.swift */,
-				2633F412294CE69F0051AD6A /* FeedViewController+TestHelpers.swift */,
-				2633F414294CE6F20051AD6A /* FeedImageCell+TestHelpers.swift */,
-				2633F416294CE74E0051AD6A /* FeedViewControllerTest+LoaderSpy.swift */,
-				2633F418294CE9320051AD6A /* FeedViewControllerTests+Assertions.swift */,
+				2633F41B294CE9D90051AD6A /* Feed UI */,
+				2633F41A294CE9D00051AD6A /* Helpers */,
 			);
 			path = EssentialFeediOSTests;
 			sourceTree = "<group>";
@@ -382,6 +375,45 @@
 				26FCAE19293F9C06009F63A0 /* UIView+Shimmering.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2633F41A294CE9D00051AD6A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2633F416294CE74E0051AD6A /* FeedViewControllerTest+LoaderSpy.swift */,
+				2633F418294CE9320051AD6A /* FeedViewControllerTests+Assertions.swift */,
+				2633F409294CE4D70051AD6A /* UIImage+TestHelpers.swift */,
+				2633F40D294CE5820051AD6A /* UIButton+TestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2633F41B294CE9D90051AD6A /* Feed UI */ = {
+			isa = PBXGroup;
+			children = (
+				2633F41C294CE9E00051AD6A /* Controllers */,
+			);
+			path = "Feed UI";
+			sourceTree = "<group>";
+		};
+		2633F41C294CE9E00051AD6A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				265B73C72935E61B00CD3FD3 /* FeedViewControllerTests.swift */,
+				2633F41D294CE9E80051AD6A /* Helpers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2633F41D294CE9E80051AD6A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2633F412294CE69F0051AD6A /* FeedViewController+TestHelpers.swift */,
+				2633F40B294CE5360051AD6A /* UIRefreshControl+TestHelpers.swift */,
+				2633F414294CE6F20051AD6A /* FeedImageCell+TestHelpers.swift */,
+				2633F40F294CE5CD0051AD6A /* UIControl+TestHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		267217C229269BEC0074A995 /* EssentialFeedIntegrationTests */ = {
