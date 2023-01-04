@@ -18,8 +18,8 @@
 		260C0EA52963C2DB0057C4BC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 260C0EA42963C2DB0057C4BC /* Feed.storyboard */; };
 		260C0EA72963EBAA0057C4BC /* UITableView+Dequeueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C0EA62963EBAA0057C4BC /* UITableView+Dequeueing.swift */; };
 		260C0EA92963ECC00057C4BC /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C0EA82963ECC00057C4BC /* UIImageView+Animations.swift */; };
-		260C0EAB296555380057C4BC /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 260C0EAA296555380057C4BC /* Feed.strings */; };
 		260C0EAD29655A9A0057C4BC /* FeedViewController+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C0EAC29655A9A0057C4BC /* FeedViewController+Localization.swift */; };
+		260C0EAE29655BBB0057C4BC /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 260C0EB029655BBB0057C4BC /* Feed.strings */; };
 		2614B750290045570011DA17 /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2614B74F290045570011DA17 /* CacheFeedUseCaseTests.swift */; };
 		2614B7532904CE8B0011DA17 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2614B7522904CE8B0011DA17 /* LocalFeedLoader.swift */; };
 		2614B7552904CEFC0011DA17 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2614B7542904CEFC0011DA17 /* FeedStore.swift */; };
@@ -131,8 +131,8 @@
 		260C0EA42963C2DB0057C4BC /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		260C0EA62963EBAA0057C4BC /* UITableView+Dequeueing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeueing.swift"; sourceTree = "<group>"; };
 		260C0EA82963ECC00057C4BC /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
-		260C0EAA296555380057C4BC /* Feed.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Feed.strings; sourceTree = "<group>"; };
 		260C0EAC29655A9A0057C4BC /* FeedViewController+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+Localization.swift"; sourceTree = "<group>"; };
+		260C0EAF29655BBB0057C4BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		2614B74F290045570011DA17 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		2614B7522904CE8B0011DA17 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		2614B7542904CEFC0011DA17 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 				26214ABA295C14DA00B26BB1 /* FeedImageViewModel.swift */,
 				260C0EA0295EAD7C0057C4BC /* FeedPresenter.swift */,
 				260C0EA229600B020057C4BC /* FeedImagePresenter.swift */,
-				260C0EAA296555380057C4BC /* Feed.strings */,
+				260C0EB029655BBB0057C4BC /* Feed.strings */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -731,7 +731,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				260C0EAB296555380057C4BC /* Feed.strings in Resources */,
+				260C0EAE29655BBB0057C4BC /* Feed.strings in Resources */,
 				260C0EA52963C2DB0057C4BC /* Feed.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -895,6 +895,17 @@
 			targetProxy = 26FCAE0F29372EEE009F63A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		260C0EB029655BBB0057C4BC /* Feed.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				260C0EAF29655BBB0057C4BC /* en */,
+			);
+			name = Feed.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		260435B72898B940009EEB95 /* Debug */ = {
