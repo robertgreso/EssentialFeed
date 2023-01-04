@@ -33,6 +33,11 @@ final class FeedImageCellController: FeedImageView {
         delegate.didRequestImage()
     }
     
+    func recapture(cell: UITableViewCell) {
+        self.cell = cell as? FeedImageCell
+        delegate.didRequestImage()
+    }
+    
     func cancelLoad() {
         releaseCellForReuse()
         delegate.didCancelImageRequest()
