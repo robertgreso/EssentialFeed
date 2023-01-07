@@ -14,6 +14,10 @@ extension FeedViewController {
         return refreshControl?.isRefreshing == true
     }
     
+    var errorMessage: String? {
+        return errorView.message
+    }
+    
     private var feedImageSection: Int {
         return 0
     }
