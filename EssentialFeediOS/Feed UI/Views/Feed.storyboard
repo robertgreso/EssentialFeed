@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,18 +17,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="UbW-JG-Ftd" userLabel="Table Header View" customClass="ErrorView" customModule="EssentialFeediOS" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jh1-tj-9gj">
+                                    <rect key="frame" x="8" y="8" width="398" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <viewLayoutGuide key="safeArea" id="EjK-SA-ME8"/>
+                            <color key="backgroundColor" systemColor="systemCyanColor"/>
+                            <constraints>
+                                <constraint firstItem="EjK-SA-ME8" firstAttribute="trailing" secondItem="jh1-tj-9gj" secondAttribute="trailing" constant="8" id="4ii-4e-kLQ"/>
+                                <constraint firstItem="jh1-tj-9gj" firstAttribute="leading" secondItem="EjK-SA-ME8" secondAttribute="leading" constant="8" id="DCL-7D-HDh"/>
+                                <constraint firstItem="EjK-SA-ME8" firstAttribute="bottom" secondItem="jh1-tj-9gj" secondAttribute="bottom" constant="8" id="DMQ-X7-SDs"/>
+                                <constraint firstItem="jh1-tj-9gj" firstAttribute="top" secondItem="EjK-SA-ME8" secondAttribute="top" constant="8" id="rnA-mG-i4f"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="jh1-tj-9gj" id="osE-Bf-7EJ"/>
+                            </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="c81-Td-joA" userLabel="Table Footer View">
-                            <rect key="frame" x="0.0" y="606" width="414" height="16"/>
+                            <rect key="frame" x="0.0" y="624" width="414" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="523" id="Vme-EI-scv" customClass="FeedImageCell" customModule="EssentialFeediOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="60.5" width="414" height="523"/>
+                                <rect key="frame" x="0.0" y="78.5" width="414" height="523"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vme-EI-scv" id="Agk-rL-XkP">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="523"/>
@@ -140,13 +159,16 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKT-kE-3Oc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="100"/>
+            <point key="canvasLocation" x="-167" y="52"/>
         </scene>
     </scenes>
     <resources>
         <image name="mappin.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
