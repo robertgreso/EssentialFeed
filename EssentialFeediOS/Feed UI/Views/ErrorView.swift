@@ -40,7 +40,7 @@ public final class ErrorView: UIView {
         UIView.animate(withDuration: 0.5) { self.alpha = 1 }
     }
     
-    private func hideAnimated() {
+    @IBAction private func hideAnimated() {
         UIView.animate(
             withDuration: 0.25,
             animations: { self.alpha = 0 },

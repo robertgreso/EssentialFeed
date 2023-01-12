@@ -22,9 +22,13 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jh1-tj-9gj">
                                     <rect key="frame" x="8" y="8" width="398" height="18"/>
+                                    <gestureRecognizers/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="5E0-5g-rsG" appends="YES" id="Svv-FD-f55"/>
+                                    </connections>
                                 </label>
                             </subviews>
                             <viewLayoutGuide key="safeArea" id="EjK-SA-ME8"/>
@@ -158,6 +162,11 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKT-kE-3Oc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5E0-5g-rsG">
+                    <connections>
+                        <action selector="hideAnimated" destination="UbW-JG-Ftd" id="E8s-HF-XOv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-167" y="52"/>
         </scene>
