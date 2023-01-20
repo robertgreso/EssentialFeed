@@ -36,6 +36,10 @@ struct FeedErrorViewModel {
         return FeedErrorViewModel(message: nil)
     }
     
+    static func error(message: String) -> FeedErrorViewModel {
+        return FeedErrorViewModel(message: message)
+    }
+    
 }
 
 final class FeedPresenter {
@@ -43,6 +47,10 @@ final class FeedPresenter {
     private let feedView: FeedView
     private let errorView: FeedErrorView
     private let loadingView: FeedLoadingView
+    
+    private var feedLoadError: String {
+        return NSLocalizedString("FEED_VIEW_CONNECTION_ERROR", tableName: "Feed", bundle: Bundle(for: FeedPresenter.self), comment: "Error message displayed when we cant load the image feed from the server")
+    }
     
     init(feedView: FeedView, loadingView: FeedLoadingView, errorView: FeedErrorView) {
         self.feedView = feedView
@@ -57,6 +65,11 @@ final class FeedPresenter {
     
     func didFinishLoading(with feed: [FeedImage]) {
         feedView.display(FeedViewModel(feed: feed))
+        loadingView.display(FeedLoadingViewModel(isLoading: false))
+    }
+    
+    func didFinishLoadingFeed(with error: Error) {
+        errorView.display(.error(message: feedLoadError))
         loadingView.display(FeedLoadingViewModel(isLoading: false))
     }
     
@@ -92,6 +105,19 @@ class FeedPresenterTests: XCTestCase {
         ])
     }
     
+    func test_didFinishLoadingFeedWithError_displaysLocalizedErrorMessageAndStopsLoading() {
+        
+        let (sut, view) = makeSUT()
+        let error = anyNSError()
+        
+        sut.didFinishLoadingFeed(with: error)
+        
+        XCTAssertEqual(view.messages, [
+            .display(errorMessage: localized("FEED_VIEW_CONNECTION_ERROR")),
+            .display(isLoading: false)
+        ])
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedPresenter, view: ViewSpy) {
@@ -102,6 +128,19 @@ class FeedPresenterTests: XCTestCase {
         trackForMemoryLeaks(sut)
         
         return (sut, view)
+    }
+    
+    
+    private func localized(_ key: String, file: StaticString = #file, line: UInt = #line) -> String {
+        let bundle = Bundle(for: FeedPresenter.self)
+        let table = "Feed"
+        let value = bundle.localizedString(forKey: key, value: nil, table: table)
+        
+        if value == key {
+            XCTFail("Missing localization for key: \(key) in table: \(table)", file: file, line: line)
+        }
+        
+        return value
     }
     
     private class ViewSpy: FeedView, FeedErrorView, FeedLoadingView {
