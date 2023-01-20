@@ -5,7 +5,7 @@
 //  Created by Róbert Grešo on 03/01/2023.
 //
 
-@testable import EssentialFeediOS
+@testable import EssentialFeed
 import XCTest
 
 final class FeedLocalizationTests: XCTestCase {
