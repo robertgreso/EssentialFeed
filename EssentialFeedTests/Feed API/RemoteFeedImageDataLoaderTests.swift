@@ -8,7 +8,7 @@
 import XCTest
 import EssentialFeed
 
-class RemoteFeedDataLoader {
+class RemoteFeedImageDataLoader {
     
     private let client: HTTPClient
     
@@ -51,9 +51,9 @@ class RemoteFeedImageDataLoaderTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeSUT(url: URL = anyURL(), file: StaticString = #file, line: UInt = #line) -> (RemoteFeedDataLoader, HTTPClientSpy) {
+    private func makeSUT(url: URL = anyURL(), file: StaticString = #file, line: UInt = #line) -> (RemoteFeedImageDataLoader, HTTPClientSpy) {
         let client = HTTPClientSpy()
-        let sut = RemoteFeedDataLoader(client: client)
+        let sut = RemoteFeedImageDataLoader(client: client)
         
         trackForMemoryLeaks(client)
         trackForMemoryLeaks(sut)
