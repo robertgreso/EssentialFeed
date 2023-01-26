@@ -7,7 +7,17 @@
 
 import Foundation
 
-public final class LocalFeedImageDataLoader: FeedImageDataLoader {
+public final class LocalFeedImageDataLoader {
+    
+    private let store: FeedImageDataStore
+    
+    public init(store: FeedImageDataStore) {
+        self.store = store
+    }
+    
+}
+
+extension LocalFeedImageDataLoader: FeedImageDataLoader {
     
     private final class Task: FeedImageDataLoaderTask {
         var completion: ((FeedImageDataLoader.Result) -> Void)?
@@ -30,15 +40,9 @@ public final class LocalFeedImageDataLoader: FeedImageDataLoader {
         
     }
     
-    public enum Error: Swift.Error {
+    public enum LoadError: Swift.Error {
         case failed
         case notFound
-    }
-    
-    private let store: FeedImageDataStore
-    
-    public init(store: FeedImageDataStore) {
-        self.store = store
     }
     
     public func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
@@ -48,13 +52,17 @@ public final class LocalFeedImageDataLoader: FeedImageDataLoader {
             guard self != nil else { return }
             
             task.complete(with: result
-                .mapError { _ in Error.failed }
-                .flatMap { data in data.map { .success($0) } ?? .failure(Error.notFound) }
+                .mapError { _ in LoadError.failed }
+                .flatMap { data in data.map { .success($0) } ?? .failure(LoadError.notFound) }
             )
         }
         
         return task
     }
+    
+}
+
+extension LocalFeedImageDataLoader {
     
     public typealias SaveResult = Result<Void, Swift.Error>
     
