@@ -30,10 +30,90 @@
             filePath = "EssentialFeedTests/Feed Cache/LocalFeedImageDataLoaderTests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "loadImageData(from:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "59CC03BE-B260-4B72-A05D-B193EDBE03DE - 14c96d31998007e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EssentialFeedTests.LocalFeedImageDataLoaderTests.test_init_doesNotMessageStoreUponCreation() -&gt; ()"
+                  moduleName = "EssentialFeedTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eR/Development/iOS%20Projects/EssentialFeed/EssentialFeedTests/Feed%20Cache/LocalFeedImageDataLoaderTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  uuid = "59CC03BE-B260-4B72-A05D-B193EDBE03DE - 6e42029fdf8a00d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EssentialFeedTests.LocalFeedImageDataLoader.loadImageData(from: Foundation.URL, completion: (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; ()) -&gt; EssentialFeed.FeedImageDataLoaderTask"
+                  moduleName = "EssentialFeedTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eR/Development/iOS%20Projects/EssentialFeed/EssentialFeedTests/Feed%20Cache/LocalFeedImageDataLoaderTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "136">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84851B40-02D2-4BC9-B389-99CF29E7157B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialFeedTests/Feed Cache/LocalFeedImageDataLoaderTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "test_loadImageDataFromURL_doenNotDeliverResultAfterCancellingTask()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "84851B40-02D2-4BC9-B389-99CF29E7157B - 2daf16656e0b59e2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EssentialFeedTests.LocalFeedImageDataLoaderTests.failed() -&gt; Swift.Result&lt;Foundation.Data, Swift.Error&gt;"
+                  moduleName = "EssentialFeedTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eR/Development/iOS%20Projects/EssentialFeed/EssentialFeedTests/Feed%20Cache/LocalFeedImageDataLoaderTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "84851B40-02D2-4BC9-B389-99CF29E7157B - b3c27c7d5a31763a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EssentialFeedTests.LocalFeedImageDataLoaderTests.test_loadImageDataFromURL_doenNotDeliverResultAfterCancellingTask() -&gt; ()"
+                  moduleName = "EssentialFeedTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eR/Development/iOS%20Projects/EssentialFeed/EssentialFeedTests/Feed%20Cache/LocalFeedImageDataLoaderTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "552">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

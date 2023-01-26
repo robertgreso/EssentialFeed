@@ -16,8 +16,25 @@ protocol FeedImageDataStore {
 
 final class LocalFeedImageDataLoader: FeedImageDataLoader {
     
-    private struct Task: FeedImageDataLoaderTask {
-        func cancel() {}
+    private final class Task: FeedImageDataLoaderTask {
+        var completion: ((FeedImageDataLoader.Result) -> Void)?
+        
+        init(_ completion: @escaping (FeedImageDataLoader.Result) -> Void) {
+            self.completion = completion
+        }
+        
+        func cancel() {
+            preventFurtherCompletions()
+        }
+        
+        func complete(with result: FeedImageDataLoader.Result) {
+            completion?(result)
+        }
+        
+        private func preventFurtherCompletions() {
+            completion = nil
+        }
+        
     }
     
     public enum Error: Swift.Error {
@@ -32,13 +49,16 @@ final class LocalFeedImageDataLoader: FeedImageDataLoader {
     }
     
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
+        let task = Task(completion)
+        
         store.retrieve(dataForUrl: url) { result in
-            completion( result
+            task.complete(with: result
                 .mapError { _ in Error.failed }
                 .flatMap { data in data.map { .success($0) } ?? .failure(Error.notFound) }
             )
         }
-        return Task()
+        
+        return task
     }
     
 }
@@ -84,6 +104,21 @@ class LocalFeedImageDataLoaderTests: XCTestCase {
         expect(sut, toCompleteWith: .success(foundData)) {
             store.complete(with: foundData)
         }
+    }
+    
+    func test_loadImageDataFromURL_doenNotDeliverResultAfterCancellingTask() {
+        let (sut, store) = makeSUT()
+        
+        var receivedResults = [FeedImageDataLoader.Result]()
+        let task = sut.loadImageData(from: anyURL()) { receivedResults.append($0) }
+        
+        task.cancel()
+        
+        store.complete(with: anyData())
+        store.complete(with: .none)
+        store.complete(withError: anyNSError())
+        
+        XCTAssertTrue(receivedResults.isEmpty, "Expected no received results after cancelling task")
     }
     
     // MARK: - Helpers
