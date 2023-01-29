@@ -66,12 +66,28 @@ class EssentialFeedCacheIntegrationTests: XCTestCase {
         expect(imageLoaderToPerformLoad, toLoad: dataToSave, for: image.url)
     }
     
+    func test_saveImageData_ovveridesSavedImageDataOnASeparateInstance() {
+        let feedLoader = makeFeedLoader()
+        let imageLoaderToPerformFirstSave = makeImageLoader()
+        let imageLoaderToPerformLastSave = makeImageLoader()
+        let imageLoaderToPerformLoad = makeImageLoader()
+        let image = uniqueImage()
+        let firstImageData = Data("first image data".utf8)
+        let lastImageData = Data("last image data".utf8)
+
+        
+        save([image],with: feedLoader)
+        save(firstImageData, for: image.url, with: imageLoaderToPerformFirstSave)
+        save(lastImageData, for: image.url, with: imageLoaderToPerformLastSave)
+        
+        expect(imageLoaderToPerformLoad, toLoad: lastImageData, for: image.url)
+    }
+    
     // MARK: Helpers
     
     private func makeFeedLoader(file: StaticString = #file, line: UInt = #line) -> LocalFeedLoader {
-        let storeBundle = Bundle(for: CoreDataFeedStore.self)
         let storeURL = testSpecificStoreURL()
-        let store = try! CoreDataFeedStore(storeURL: storeURL, bundle: storeBundle)
+        let store = try! CoreDataFeedStore(storeURL: storeURL)
         let sut = LocalFeedLoader(store: store, currentDate: Date.init)
         
         trackForMemoryLeaks(sut)
@@ -121,7 +137,7 @@ class EssentialFeedCacheIntegrationTests: XCTestCase {
     private func save(_ data: Data, for url: URL, with loader: LocalFeedImageDataLoader, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for save completion")
         
-        loader.save(Data, for: url) { result in
+        loader.save(data, for: url) { result in
             if case let Result.failure(error) = result {
                 XCTFail("Expected to save image data successfully, got error \(error)", file: file, line: line)
             }
@@ -134,7 +150,7 @@ class EssentialFeedCacheIntegrationTests: XCTestCase {
     private func expect(_ sut: LocalFeedImageDataLoader, toLoad expectedData: Data, for url: URL, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
         
-        _ = sut.loadImageData(from: URL, completion: { result in
+        _ = sut.loadImageData(from: url, completion: { result in
             switch result {
             case let .success(loadedData):
                 XCTAssertEqual(expectedData, loadedData, file: file, line: line)
