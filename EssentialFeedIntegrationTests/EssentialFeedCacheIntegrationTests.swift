@@ -22,13 +22,13 @@ class EssentialFeedCacheIntegrationTests: XCTestCase {
         undoStoreSideEffects()
     }
     
-    func test_load_deliversNoItemsOnEmptyCache() {
+    func test_loadFeed_deliversNoItemsOnEmptyCache() {
         let sut = makeFeedLoader()
         
         expect(sut, toLoad: [])
     }
     
-    func test_load_deliversItemSavedOnASeparateInstance() {
+    func test_loadFeed_deliversItemSavedOnASeparateInstance() {
         let sutToPerformSave = makeFeedLoader()
         let sutToPerformLoad = makeFeedLoader()
         let feed = uniqueImageFeed().models
@@ -38,7 +38,7 @@ class EssentialFeedCacheIntegrationTests: XCTestCase {
         expect(sutToPerformLoad, toLoad: feed)
     }
     
-    func test_save_overridesItemsSavedOnSeparateInstance() {
+    func test_saveFeed_overridesItemsSavedOnSeparateInstance() {
         let sutToPerformFirstSave = makeFeedLoader()
         let sutToPerformLastSave = makeFeedLoader()
         let sutToPerformLoad = makeFeedLoader()
