@@ -88,6 +88,15 @@ class ValidateFeedCacheUseCaseTests: XCTestCase {
         }
     }
     
+    func test_validateCache_succeedsOnSuccessfulDeletionOfFailedRetrieval() {
+        let (sut, store) = makeSUT()
+        
+        expect(sut, toCompleteWith: .success(())) {
+            store.completeRetrieval(with: anyNSError())
+            store.completeDeletionSuccessfully()
+        }
+    }
+    
     // MARK - Helpers
     
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (LocalFeedLoader, FeedStoreSpy) {
