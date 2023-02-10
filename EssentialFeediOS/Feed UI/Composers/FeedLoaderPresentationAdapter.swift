@@ -7,6 +7,7 @@
 
 import Foundation
 import EssentialFeed
+import EssentialFeediOS
 
 internal final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
     
