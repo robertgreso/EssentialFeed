@@ -311,6 +311,7 @@
 		260435A72898B940009EEB95 /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
+				26C184E829C98A2C0012948F /* Image Comments API */,
 				26C184E329C988EE0012948F /* Shared API */,
 				26C184E429C989400012948F /* Shared API Infra */,
 				267A129F29C82BC800A6AAA9 /* Image Comments Feature */,
@@ -327,6 +328,7 @@
 		260435B32898B940009EEB95 /* EssentialFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				26C184E929C98A430012948F /* Image Comments API */,
 				26C184E729C989A00012948F /* Shared API Infra */,
 				26C184E529C989660012948F /* Shared API */,
 				260C0EBF296954C20057C4BC /* Feed Presentation */,
@@ -416,8 +418,6 @@
 				26836E1928D1A02D00B6191C /* FeedItemsMapper.swift */,
 				263093DE2908ED84002AD8DF /* RemoteFeedItem.swift */,
 				268F018F297E25340067A342 /* RemoteFeedImageDataLoader.swift */,
-				267A129B29C825A600A6AAA9 /* RemoteImageCommentsLoader.swift */,
-				267A129D29C8265800A6AAA9 /* ImageCommentsMapper.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -490,7 +490,6 @@
 				268F018C297E24100067A342 /* Helpers */,
 				268F61CB289CCE1200F5553F /* LoadFeedFromRemoteUseCaseTests.swift */,
 				26AA2C52297BC08B00A48535 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
-				267A129929C824E400A6AAA9 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -575,6 +574,23 @@
 				26AA4BA828D9972E0009B7DB /* URLSessionHTTPClientTests.swift */,
 			);
 			path = "Shared API Infra";
+			sourceTree = "<group>";
+		};
+		26C184E829C98A2C0012948F /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				267A129B29C825A600A6AAA9 /* RemoteImageCommentsLoader.swift */,
+				267A129D29C8265800A6AAA9 /* ImageCommentsMapper.swift */,
+			);
+			path = "Image Comments API";
+			sourceTree = "<group>";
+		};
+		26C184E929C98A430012948F /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				267A129929C824E400A6AAA9 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
+			);
+			path = "Image Comments API";
 			sourceTree = "<group>";
 		};
 		26CEC88F28E89076000ABC38 /* Helpers */ = {
