@@ -7,45 +7,12 @@
 
 import Foundation
 
-public final class RemoteFeedLoader: FeedLoader {
+public typealias RemoteFeedLoader = RemoteLoader<[FeedImage]>
+
+public extension RemoteFeedLoader {
     
-    private let url: URL
-    private let client: HTTPClient
-    
-    public enum Error: Swift.Error {
-        case connectivity
-        case invalidData
-    }
-    
-    public typealias Result = FeedLoader.Result
-    
-    public init(client: HTTPClient, url: URL) {
-        self.client = client
-        self.url = url
-    }
-    
-    public func load(completion: @escaping (Result) -> Void) {
-        
-        // TODO: WHY THE FUCK is this called in the tests only when client.complete which is after load
-        client.get(from: url) { [weak self] result in
-            guard self != nil else { return }
-            
-            switch result {
-            case let .success((data, response)):
-                completion(RemoteFeedLoader.map(data, from: response))
-            case .failure:
-                completion(.failure(RemoteFeedLoader.Error.connectivity))
-            }
-        }
-    }
-    
-    private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
-        do {
-            let items = try FeedItemsMapper.map(data, response)
-            return .success(items)
-        } catch {
-            return .failure(error)
-        }
+    convenience init(client: HTTPClient, url: URL) {
+        self.init(client: client, url: url, mapper: FeedItemsMapper.map)
     }
     
 }
