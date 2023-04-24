@@ -13,16 +13,10 @@ class FeedImagePresenterTests: XCTestCase {
     func test_map_createsViewModel() {
         let image = uniqueImage()
         
-        let viewModel = FeedImagePresenter<ViewSpy, AnyImage>.map(image)
+        let viewModel = FeedImagePresenter.map(image)
         
         XCTAssertEqual(viewModel.description, image.description)
         XCTAssertEqual(viewModel.description, image.description)
     }
-    
-    private class ViewSpy: FeedImageView {
-        func display(_ model: EssentialFeed.FeedImageViewModel<AnyImage>) {}
-    }
-    
-    private struct AnyImage: Equatable {}
-    
+
 }
