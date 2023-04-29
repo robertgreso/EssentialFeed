@@ -58,6 +58,11 @@ extension FeedImageCellController: CellController {
         cancelLoad()
     }
     
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.cell = cell as? FeedImageCell
+        delegate.didRequestImage()
+    }
+    
     public func recapture(cell: UITableViewCell) {
         self.cell = cell as? FeedImageCell
         delegate.didRequestImage()

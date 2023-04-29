@@ -61,14 +61,14 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
         return controller.tableView(tableView, cellForRowAt: indexPath)
     }
     
+    public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let controller = cellController(forRowAt: indexPath)
+        controller.tableView?(tableView, willDisplay: cell, forRowAt: indexPath)
+    }
+    
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let controller = removeLoadingControllerLoad(at: indexPath)
         controller?.tableView?(tableView, didEndDisplaying: cell, forRowAt: indexPath)
-    }
-    
-    public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        // TODO
-        //cellController(forRowAt: indexPath).recapture(cell: cell)
     }
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
