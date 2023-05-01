@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,41 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="UbW-JG-Ftd" userLabel="Table Header View" customClass="ErrorView" customModule="EssentialFeediOS" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jh1-tj-9gj">
-                                    <rect key="frame" x="8" y="8" width="377" height="18"/>
-                                    <gestureRecognizers/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                    <connections>
-                                        <outletCollection property="gestureRecognizers" destination="5E0-5g-rsG" appends="YES" id="Svv-FD-f55"/>
-                                    </connections>
-                                </label>
-                            </subviews>
-                            <viewLayoutGuide key="safeArea" id="EjK-SA-ME8"/>
-                            <color key="backgroundColor" systemColor="systemRedColor"/>
-                            <constraints>
-                                <constraint firstItem="EjK-SA-ME8" firstAttribute="trailing" secondItem="jh1-tj-9gj" secondAttribute="trailing" constant="8" id="4ii-4e-kLQ"/>
-                                <constraint firstItem="jh1-tj-9gj" firstAttribute="leading" secondItem="EjK-SA-ME8" secondAttribute="leading" constant="8" id="DCL-7D-HDh"/>
-                                <constraint firstItem="EjK-SA-ME8" firstAttribute="bottom" secondItem="jh1-tj-9gj" secondAttribute="bottom" constant="8" id="DMQ-X7-SDs"/>
-                                <constraint firstItem="jh1-tj-9gj" firstAttribute="top" secondItem="EjK-SA-ME8" secondAttribute="top" constant="8" id="rnA-mG-i4f"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="label" destination="jh1-tj-9gj" id="osE-Bf-7EJ"/>
-                            </connections>
-                        </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="c81-Td-joA" userLabel="Table Footer View">
-                            <rect key="frame" x="0.0" y="250" width="393" height="16"/>
+                            <rect key="frame" x="0.0" y="216" width="393" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCommentCell" rowHeight="138" id="Vme-EI-scv" customClass="ImageCommentCell" customModule="EssentialFeediOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="393" height="138"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="138"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vme-EI-scv" id="Agk-rL-XkP">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="138"/>
@@ -120,16 +92,9 @@
                             <action selector="refresh" destination="M1D-Cz-vBM" eventType="valueChanged" id="zhd-6l-WnL"/>
                         </connections>
                     </refreshControl>
-                    <connections>
-                        <outlet property="errorView" destination="UbW-JG-Ftd" id="B3C-qX-cf0"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKT-kE-3Oc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="5E0-5g-rsG">
-                    <connections>
-                        <action selector="hideAnimated" destination="UbW-JG-Ftd" id="E8s-HF-XOv"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="5E0-5g-rsG"/>
             </objects>
             <point key="canvasLocation" x="397.70992366412213" y="64.788732394366207"/>
         </scene>
@@ -140,9 +105,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

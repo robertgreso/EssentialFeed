@@ -15,7 +15,7 @@ extension ListViewController {
     }
     
     var errorMessage: String? {
-        return errorView?.message
+        return errorView.message
     }
     
     private var feedImageSection: Int {
@@ -24,6 +24,10 @@ extension ListViewController {
     
     func simulateUserInitiatedFeedReload() {
         refreshControl?.simulatePullToRefresh()
+    }
+    
+    func simulateErrorViewTap() {
+        errorView.simulateTap()
     }
     
     @discardableResult

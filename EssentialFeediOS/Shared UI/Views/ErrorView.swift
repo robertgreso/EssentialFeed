@@ -7,23 +7,42 @@
 
 import UIKit
 
-public final class ErrorView: UIView {
-    
-    @IBOutlet private var label: UILabel!
+public final class ErrorView: UIButton {
     
     public var message: String? {
-        get { return isVisible ? label.text : nil }
+        get { return isVisible ? title(for: .normal) : nil }
         set { setMessageAnimated(newValue) }
+    }
+    
+    public var onHide: (() -> Void)?
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    private func configure() {
+        backgroundColor = .red
+        
+        addTarget(self, action: #selector(hideAnimated), for: .touchUpInside)
+        
+        configureLabel()
+        hideMessagae()
+    }
+    
+    private func configureLabel() {
+        titleLabel?.textColor = .white
+        titleLabel?.textAlignment = .center
+        titleLabel?.numberOfLines = 0
+        titleLabel?.font = .systemFont(ofSize: 17)
     }
     
     private var isVisible: Bool {
         return alpha > 0
-    }
-    
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        label.text = nil
     }
     
     private func setMessageAnimated(_ message: String?) {
@@ -35,17 +54,26 @@ public final class ErrorView: UIView {
     }
     
     private func showAnimated(_ message: String) {
-        label.text = message
+        setTitle(message, for: .normal)
         
+        contentEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
+
         UIView.animate(withDuration: 0.5) { self.alpha = 1 }
     }
     
-    @IBAction private func hideAnimated() {
+    private func hideMessagae() {
+        setTitle(nil, for: .normal)
+        alpha = 0
+        contentEdgeInsets = .init(top: -2.5, left: 0, bottom: -2.5, right: 0)
+        onHide?()
+    }
+    
+    @objc private func hideAnimated() {
         UIView.animate(
             withDuration: 0.25,
             animations: { self.alpha = 0 },
             completion: { completed in
-                if completed { self.label.text = nil }
+                if completed { self.hideMessagae() }
             }
         )
     }
