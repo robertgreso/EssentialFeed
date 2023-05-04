@@ -10,6 +10,12 @@ import EssentialFeediOS
 
 extension ListViewController {
     
+    public override func loadViewIfNeeded() {
+        super.loadViewIfNeeded()
+        
+        tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
+    }
+    
     var isShowingLoadingIndicator: Bool {
         return refreshControl?.isRefreshing == true
     }
@@ -36,7 +42,7 @@ extension ListViewController {
     }
     
     func numberOfRenderedFeedImageViews() -> Int {
-        self.tableView.numberOfRows(inSection: feedImageSection)
+        tableView.numberOfSections == 0 ? 0 : self.tableView.numberOfRows(inSection: feedImageSection)
     }
     
     func renderedFeedImageData(at index: Int) -> Data? {
