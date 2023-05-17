@@ -32,6 +32,17 @@ class FeedSnapshotTests: XCTestCase {
 
     }
     
+    func test_feedWithLoadMoreIndicator() {
+        let sut = makeSUT()
+        
+        sut.display(feedWithLoadMoreIndicator())
+        
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_LOAD_MORE_INDICATOR_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_LOAD_MORE_INDICATOR_light_extraExtraExtraLarge")
+
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT() -> ListViewController {
@@ -71,6 +82,20 @@ class FeedSnapshotTests: XCTestCase {
                 location: "Garth Pier",
                 image: nil
             )
+        ]
+    }
+    
+    private func feedWithLoadMoreIndicator() -> [CellController] {
+        let stub = feedWithContent().last!
+        let cellController = FeedImageCellController(viewModel: stub.viewModel, delegate: stub, selection: {})
+        stub.controller = cellController
+        
+        let loadMore = LoadMoreCellController()
+        loadMore.display(ResourceLoadingViewModel(isLoading: true))
+        
+        return [
+            CellController(id: UUID(), cellController),
+            CellController(id: UUID(), loadMore)
         ]
     }
     
