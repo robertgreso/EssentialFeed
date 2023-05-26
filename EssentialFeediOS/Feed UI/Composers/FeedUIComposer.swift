@@ -30,7 +30,7 @@ public final class FeedUIComposer {
             selection: selection
         )
         
-        let presenter = LoadResourcePresenter(resourceView: feedViewAdapter, loadingView:  WeakRefVirtualProxy(feedController), errorView: WeakRefVirtualProxy(feedController), mapper: { $0 })
+        let presenter = LoadResourcePresenter(resourceView: feedViewAdapter, loadingView:  WeakRefVirtualProxy(feedController), errorView: WeakRefVirtualProxy(feedController))
         presentationAdapter.presenter = presenter
         
         return feedController
