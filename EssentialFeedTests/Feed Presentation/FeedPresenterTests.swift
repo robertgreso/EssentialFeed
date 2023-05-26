@@ -14,14 +14,6 @@ class FeedPresenterTests: XCTestCase {
         XCTAssertEqual(FeedPresenter.title, localized("FEED_VIEW_TITLE"))
     }
     
-    func test_map_createsViewModel() {
-        let feed = uniqueImageFeed().models
-        
-        let viewModel = FeedPresenter.map(feed: feed)
-        
-        XCTAssertEqual(feed, viewModel.feed)
-    }
-    
     private func localized(_ key: String, file: StaticString = #file, line: UInt = #line) -> String {
         let table = "Feed"
         let bundle = Bundle(for: FeedPresenter.self)

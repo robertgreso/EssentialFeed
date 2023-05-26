@@ -18,8 +18,4 @@ public final class FeedPresenter {
         )
     }
     
-    public static func map(feed: [FeedImage]) -> FeedViewModel {
-        FeedViewModel(feed: feed)
-    }
-    
 }
