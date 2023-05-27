@@ -28,10 +28,10 @@ public struct CellController {
         self.dataSourcePrefetching = nil
     }
     
-    public init(id: AnyHashable, _ dataSource: UITableViewDataSource, _ delegate: UITableViewDelegate) {
+    public init(id: AnyHashable, _ dataSource: UITableViewDataSource & UITableViewDelegate) {
         self.id = id
         self.dataSource = dataSource
-        self.delegate = delegate
+        self.delegate = dataSource
         self.dataSourcePrefetching = nil
     }
     

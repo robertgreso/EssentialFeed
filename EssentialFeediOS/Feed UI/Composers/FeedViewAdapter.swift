@@ -57,7 +57,7 @@ internal final class FeedViewAdapter: ResourceView {
         let loadMore = LoadMoreCellController {
             viewModel.loadMore?({ _ in })
         }
-        let loadMoreSection = [CellController(id: UUID(), loadMore, loadMore)]
+        let loadMoreSection = [CellController(id: UUID(), loadMore)]
         
         controller?.display(feed, loadMoreSection)
     }
