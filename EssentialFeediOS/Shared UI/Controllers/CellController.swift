@@ -28,6 +28,13 @@ public struct CellController {
         self.dataSourcePrefetching = nil
     }
     
+    public init(id: AnyHashable, _ dataSource: UITableViewDataSource, _ delegate: UITableViewDelegate) {
+        self.id = id
+        self.dataSource = dataSource
+        self.delegate = delegate
+        self.dataSourcePrefetching = nil
+    }
+    
 }
 
 extension CellController: Equatable {
